@@ -1,17 +1,13 @@
 
-## 技术栈和库的选择
+## 资源
 
-我们使用的主要技术和库包括：
-
-- **HTML5**: 创建和管理网页内容。
-- **JavaScript**: 管理网页行为的编程语言。
 - **[MediaPipe](https://developers.google.com/mediapipe/solutions/vision/hand_landmarker)**: Google 开发的用于构建管道来处理多媒体内容的框架，特别适合处理视频流中的手势和体态追踪。
 
 ## 网页结构概览
 
 ### head 部分
 
-首先，在HTML的`<head>`部分，我们需要引入必要的CSS和JavaScript库：
+首先，在HTML的`<head>`部分，需要引入必要的CSS和JavaScript库：
 
 ```html
 <!-- CSS 文件 -->
@@ -62,7 +58,7 @@ function enableCam(event) {
 
 ### 利用 MediaPipe 追踪关键点
 
-我们使用MediaPipe库中的`HandLandmarker`和`PoseLandmarker`来识别视频中的手势和体态的关键点。创建一个Vision Tasks文件解析器来设定模型路径并进行初始化。然后，当视频数据加载后，我们周期性地调用`predictWebcam`函数。
+使用MediaPipe库中的`HandLandmarker`和`PoseLandmarker`来识别视频中的手势和体态的关键点。创建一个Vision Tasks文件解析器来设定模型路径并进行初始化。然后，当视频数据加载后，周期性地调用`predictWebcam`函数。
 
 ```javascript
 let handLandmarker = await HandLandmarker.createFromOptions(...);
@@ -79,7 +75,7 @@ async function predictWebcam() {
 
 ### 绘制关键点和连接线
 
-使用`drawing_utils`中的`drawConnectors`和`drawLandmarks`函数来绘制关键点和它们之间的连接线，增强视觉效果和理解。
+使用`drawing_utils`中的`drawConnectors`和`drawLandmarks`函数来绘制关键点和它们之间的连接线。
 
 ```javascript
 // 清除画布和绘制检测结果
